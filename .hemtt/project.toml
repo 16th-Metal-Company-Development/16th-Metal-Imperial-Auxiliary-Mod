@@ -1,0 +1,24 @@
+name = "The 16th Metal Company Imperial Aux Mod"
+prefix = "16th_Imp"
+mainprefix = "z"
+
+[build]
+addons_directory = "addons"
+
+[properties]
+author = "16th Modding Team"
+
+[hemtt.release]
+sign = true
+
+[files]
+include = [
+    "metimperiallogo.paa",
+    "16th_logo.paa",
+    "mod.cpp",
+]
+
+[version]
+major = 1
+minor = 1
+patch = 0
