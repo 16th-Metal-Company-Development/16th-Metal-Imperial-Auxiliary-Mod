@@ -2333,8 +2333,7 @@ class CfgWeapons
 			soundBurst=0;
 			sounds[]=
 			{
-				"StandardSound",
-				"SilencedSound"
+				"StandardSound"
 			};
 			class BaseSoundModeType;
 			class StandardSound: BaseSoundModeType
@@ -2489,7 +2488,8 @@ class CfgWeapons
 			{
 				compatibleItems[]=
 				{
-					"MET_E11_Scope"
+					"MET_E11_Scope",
+					"MET_E11_Optic"
 				};
 			};
 			class MuzzleSlot: MuzzleSlot
@@ -11748,10 +11748,7 @@ class CfgWeapons
 			};
 		};
 	};
-	class optic_Holosight
-	{
-		class InventoryOpticsItem_Base_F;
-	};
+	class optic_Holosight;
 	class MET_E11_Scope: optic_Holosight
 	{
 		author="Indecisive Armoury Team";
@@ -11772,7 +11769,7 @@ class CfgWeapons
 			muzzlePos="usti hlavne";
 			class OpticsModes
 			{
-				class IDA_E11_Collimator
+				class MET_E11_Collimator
 				{
 					cameraDir="";
 					distanceZoomMax=200;
