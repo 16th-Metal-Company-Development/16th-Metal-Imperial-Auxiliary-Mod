@@ -2704,7 +2704,7 @@ class CfgWeapons
 			recoil="recoil_single_mx";
 			recoilProne="recoil_single_prone_mx";
 			reloadTime=0.1;
-			dispersion=0.0012000001;
+			dispersion=0.0008;
 			minRange=2;
 			minRangeProbab=0.5;
 			midRange=250;
@@ -2731,7 +2731,7 @@ class CfgWeapons
 			recoil="recoil_auto_mk20";
 			recoilProne="recoil_auto_prone_mk20";
 			reloadTime=0.1;
-			dispersion=0.0013;
+			dispersion=0.0008;
 			minRange=0;
 			minRangeProbab=0.89999998;
 			midRange=15;
@@ -2939,7 +2939,7 @@ class CfgWeapons
 			recoil="recoil_single_mx";
 			recoilProne="recoil_single_prone_mx";
 			reloadTime=0.1;
-			dispersion=0.0012000001;
+			dispersion=0.0008;
 			minRange=2;
 			minRangeProbab=0.5;
 			midRange=100;
@@ -3021,7 +3021,7 @@ class CfgWeapons
 			recoil="recoil_single_mx";
 			recoilProne="recoil_single_prone_mx";
 			reloadTime=0.1;
-			dispersion=0.0012000001;
+			dispersion=0.0008;
 			minRange=2;
 			minRangeProbab=0.5;
 			midRange=100;
