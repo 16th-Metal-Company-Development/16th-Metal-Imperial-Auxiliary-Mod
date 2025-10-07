@@ -12051,8 +12051,8 @@ class CfgWeapons
 					opticsZoomInit=0.125;//2x
 					//discreteDistance[]={100,300,400,500,600,700,800,900,1000};
 					//discreteDistanceInitIndex=1;
-					//distanceZoomMin=100;
-					//distanceZoomMax=1000;
+					distanceZoomMin=300;
+					distanceZoomMax=300;
 					nFovLimit=0.07;
 					//discreteFov[]={0.125,0.055500001};
 					discreteInitIndex=0;
