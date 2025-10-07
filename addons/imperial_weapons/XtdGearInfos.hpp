@@ -55,8 +55,8 @@ class XtdGearInfos {
 
         // [Imp] RK-3 Blaster Pistol
         class MET_rk3pistol                     { model = "rk3"; Mod = "LLTE"; };
-        class MET_RK3                           { model = "rk3"; Mod = "WM"; };
-        class MET_WM_RK3                        { model = "rk3"; Mod = "3AS"; };
+        class MET_RK3                           { model = "rk3"; Mod = "3AS"; };
+        class MET_WM_RK3                        { model = "rk3"; Mod = "WM"; };
 
         // [Imp] EC-17 Holdout Blaster
         class MET_ec17pistol                      { model = "ec17"; Mod = "LLTE"; };
