@@ -234,7 +234,7 @@ class XtdGearModels {
             options[] = { "Mod" };
             class Mod {
                 values[] = {
-                    "LLTE", "WM", "IDA"
+                    "LLTE", "WM", "IDA", "3AS"
                 };
             };
         };

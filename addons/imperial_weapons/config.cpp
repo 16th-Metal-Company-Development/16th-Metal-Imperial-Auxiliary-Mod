@@ -2530,7 +2530,6 @@ class CfgWeapons
 	{
 		IDA_StunWeapon="MET_IDA_E11_UGL_Stun";
 		baseWeapon="MET_IDA_E11_UGL";
-		recoil="IDA_recoil_BlasterCarbine";
 		displayName="[Imp] E-11 Blaster Carbine GL";
 		scope=2;
 		picture="Indecisive_Armoury_Weapons_IMPERIAL\Data\E11\E11_ui.paa";
@@ -9525,6 +9524,389 @@ class CfgWeapons
 		initSpeed=350;
 	};*/
 	/*========================================================================================================================================
+    ========================================= DC-15 ==========================================================================================
+    =========================================================================================================================================*/
+	class MET_REP_dc15a: JMSLLTE_BlasterRifle_Base
+	{
+		scope=0;
+		model="\JMSLLTE_weapons\dc15a\dc15a.p3d";
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"JMSLLTE_weapons\anim\A_handanim_dc15a.rtm"
+		};
+		reloadAction="ReloadMagazine";
+		picture="\JMSLLTE_weapons\dc15a\ico_dc15a.paa";
+		magazines[]=
+		{
+			"JMSLLTE_DC15A_60Rnd_Mag"
+		};
+		displayname="DC-15A blaster rifle";
+		author="JMax";
+		descriptionShort="Standard issue heavy blaster<br />Ammo: DC15A Energy cell<br />Manufactured by BlasTech Industries";
+		selectionFireAnim="muzzleFlash";
+		changeFiremodeSound[]=
+		{
+			"A3\Sounds_F\arsenal\weapons\Rifles\Mk20\firemode_Mk20",
+			0.25118864,
+			1,
+			5
+		};
+		class Library
+		{
+			libTextDesc="";
+		};
+		class GunParticles
+		{
+			class SecondEffect
+			{
+				positionName="Nabojnicestart";
+				directionName="Nabojniceend";
+				effectName="CaselessAmmoCloud";
+			};
+			class JMSLLTE_RifleSmokeTrail
+			{
+				positionName="usti hlavne";
+				directionName="konec hlavne";
+				effectName="JMSLLTE_BlasterFireBlue_hand";
+			};
+		};
+		drySound[]=
+		{
+			"JMSLLTE_weapons\sounds\overheat_mid_2.ogg",
+			1,
+			1,
+			20
+		};
+		reloadMagazineSound[]=
+		{
+			"JMSLLTE_weapons\sounds\reload.wss",
+			1.5,
+			1,
+			20
+		};
+		soundBullet[]={};
+		modes[]=
+		{
+			"Single",
+			"FullAuto",
+			"close",
+			"short",
+			"medium"
+		};
+		fireLightDuration=0.0049999999;
+		fireLightIntensity=0.0049999999;
+		fireLightDiffuse[]={0.0024999999,0,0.1};
+		fireLightAmbient[]={0,0,0};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"JMSLLTE_DC15A_Shot_SoundSet",
+					"SDAR_Tail_SoundSet",
+					"SDAR_InteriorTail_SoundSet"
+				};
+			};
+			recoil="recoil_single_mx";
+			recoilProne="recoil_single_prone_mx";
+			reloadTime=0.18000001;
+			dispersion=0.00115;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=250;
+			midRangeProbab=0.69999999;
+			maxRange=500;
+			maxRangeProbab=0.2;
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			sounds[]=
+			{
+				"StandardSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"JMSLLTE_DC15A_Shot_SoundSet",
+					"SDAR_Tail_SoundSet",
+					"SDAR_InteriorTail_SoundSet"
+				};
+			};
+			recoil="recoil_auto_mk20";
+			recoilProne="recoil_auto_prone_mk20";
+			reloadTime=0.16;
+			dispersion=0.0013;
+			minRange=0;
+			minRangeProbab=0.89999998;
+			midRange=15;
+			midRangeProbab=0.69999999;
+			maxRange=30;
+			maxRangeProbab=0.1;
+			aiRateOfFire=1e-006;
+		};
+		class close: Single
+		{
+			showToPlayer=0;
+			aiRateOfFire=0.25;
+			aiRateOfFireDistance=400;
+			minRange=0;
+			minRangeProbab=0.050000001;
+			midRange=100;
+			midRangeProbab=0.69999999;
+			maxRange=200;
+			maxRangeProbab=0.2;
+		};
+		class short: close
+		{
+			aiRateOfFire=0.5;
+			aiRateOfFireDistance=500;
+			minRange=100;
+			minRangeProbab=0.2;
+			midRange=200;
+			midRangeProbab=0.69999999;
+			maxRange=300;
+			maxRangeProbab=0.2;
+		};
+		class medium: close
+		{
+			aiRateOfFire=1;
+			aiRateOfFireDistance=900;
+			minRange=200;
+			minRangeProbab=0.2;
+			midRange=300;
+			midRangeProbab=0.69999999;
+			maxRange=400;
+			maxRangeProbab=0.2;
+		};
+		inertia=0.30000001;
+		dexterity=1.7;
+		initSpeed=400;
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=30;
+			class CowsSlot: CowsSlot
+			{
+				compatibleItems[]=
+				{
+					"MET_IMP_DC15a_bl_Scope",
+					"MET_IMP_DC15a_red_bl_Scope"
+				};
+				iconPosition[]={0.60000002,0.27000001};
+				iconScale=0.15000001;
+			};
+		};
+	};
+	class MET_IMP_dc15le: MET_REP_dc15a
+	{
+		scope=2;
+		model="\JMSLLTE_weapons\dc15a\dc15le.p3d";
+		magazines[]=
+		{
+			"MET_DC15A_Red_mag"
+		};
+		displayname="[Purge] DC-15LE blaster rifle";
+		author="JMax";
+		descriptionShort="Modernized heavy blaster<br />Ammo: DC15LE Energy cell<br />Manufactured by BlasTech Industries";
+		fireLightDiffuse[]={0.1,0,0.0024999999};
+		reloadAction="GestureReload_IDA_Reload_Blaster";
+		reloadMagazineSound[]=
+		{
+			"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg",
+			5,
+			1,
+			100
+		};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"JMSLLTE_DC15A_Shot_SoundSet",
+					"SDAR_Tail_SoundSet",
+					"SDAR_InteriorTail_SoundSet"
+				};
+			};
+			recoil="recoil_single_mx";
+			recoilProne="recoil_single_prone_mx";
+			reloadTime=0.1333333333333333;
+			dispersion=0.00007;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=250;
+			midRangeProbab=0.69999999;
+			maxRange=500;
+			maxRangeProbab=0.2;
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			sounds[]=
+			{
+				"StandardSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"JMSLLTE_DC15A_Shot_SoundSet",
+					"SDAR_Tail_SoundSet",
+					"SDAR_InteriorTail_SoundSet"
+				};
+			};
+			recoil="recoil_auto_mx";
+			recoilProne="recoil_auto_prone_mx";
+			reloadTime=0.1333333333333333;
+			dispersion=0.00007;
+			minRange=0;
+			minRangeProbab=0.89999998;
+			midRange=15;
+			midRangeProbab=0.69999999;
+			maxRange=30;
+			maxRangeProbab=0.1;
+			aiRateOfFire=1e-006;
+		};
+		class GunParticles
+		{
+			class SecondEffect
+			{
+				positionName="Nabojnicestart";
+				directionName="Nabojniceend";
+				effectName="CaselessAmmoCloud";
+			};
+			class JMSLLTE_RifleSmokeTrail
+			{
+				positionName="usti hlavne";
+				directionName="konec hlavne";
+				effectName="JMSLLTE_BlasterFire_hand";
+			};
+		};
+	};
+	class MET_IMP_dc15le_Scoped: MET_IMP_dc15le
+	{
+		author="JMax";
+		_generalMacro="MET_IMP_dc15le_Scoped";
+		weaponpoolavailable=1;
+		class LinkedItems
+		{
+			class LinkedItemsOptic
+			{
+				slot="CowsSlot";
+				item="MET_IMP_DC15a_red_bl_Scope";
+			};
+		};
+	};
+	class IDA_DC15X;
+	class MET_DC15X_Evil: IDA_DC15X
+	{
+		author="Indecisive Armoury Team";
+		scope=2;
+		inertia=0;
+		canShootInWater=1;
+		displayName="[Purge] DC-15X Targeting Blaster";
+		model="Indecisive_Armoury_Weapons_IMPERIAL\Data\DC15X_Evil\Model\IDA_DC15X_Evil.p3d";
+		baseWeapon="MET_DC15X_Evil";
+		magazines[]=
+		{
+			"MET_Red_DC15x_mag",
+			"MET_DC15x_at_mag"
+		};
+		recoil="MET_recoil_DC15X";
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound"
+			};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
+			};
+			class StandardSound: BaseSoundModeType
+			{
+				weaponSoundEffect="";
+				begin1[]=
+				{
+					"\Indecisive_Armoury_Sounds\Republic\DC15x.ogg",
+					2.5,
+					1,
+					1800
+				};
+				soundBegin[]=
+				{
+					"begin1",
+					1
+				};
+				beginwater1[]=
+				{
+					"\Indecisive_Armoury_Sounds\Republic\DC15x.ogg",
+					1,
+					1,
+					400
+				};
+				soundBeginWater[]=
+				{
+					"beginwater1",
+					1
+				};
+			};
+			reloadTime=0.6;
+			dispersion=0.000000000000000001;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=100;
+			midRangeProbab=0.69999999;
+			maxRange=10000;
+			maxRangeProbab=0.30000001;
+		};
+		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+		class OpticsModes
+		{
+			class IDA_DC15X_Scope
+			{
+				opticsID=1;
+				useModelOptics=1;
+				opticsPPEffects[]=
+				{
+					"OpticsRadialBlur1",
+					"OpticsBlur1"
+				};
+				opticsZoomMin=0.0037499999;
+				opticsZoomMax=0.1;
+				opticsZoomInit=0.75;
+				discreteDistance[]={200};
+				discreteDistanceInitIndex=0;
+				discreteInitIndex=0;
+				//discretefov[]={0.125,0.041999999};
+				distanceZoomMin=100;
+				distanceZoomMax=1000;
+				memoryPointCamera="opticView";
+				visionMode[]={};
+				opticsFlare=1;
+				opticsDisablePeripherialVision=1;
+				cameraDir="";
+			};
+		};
+		fireLightDiffuse[]={1,0,0};
+	};
+	/*========================================================================================================================================
     ========================================= RK-3 ===========================================================================================
     =========================================================================================================================================*/
 	class MET_rk3pistol: JMSLLTE_BlasterPistol_Base
@@ -10415,6 +10797,122 @@ class CfgWeapons
 			{
 				compatibleItems[]={};
 			};
+		};
+	};
+	class MET_EC17_Base_F: Pistol_Base_F
+	{
+		author="$STR_3as_Studio";
+		magazines[]=
+		{
+			"MET_ec17_pistol_battery"
+		};
+		magazineWell[]={};
+		drySound[]=
+		{
+			"\3AS\3AS_Main\Sounds\Blaster_empty",
+			0.39810717,
+			1,
+			20
+		};
+		reloadMagazineSound[]=
+		{
+			"3as\3AS_Main\Sounds\Reload\Venting_Sound.ogg",
+			2,
+			1,
+			30
+		};
+		reloadAction="3AS_Vent_Reload_Pistol";
+		modes[]=
+		{
+			"Single"
+		};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"3AS_EC17_SoundSet"
+				};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"3AS_EC17_SoundSet"
+				};
+			};
+			recoil="recoil_pistol_heavy";
+			recoilProne="recoil_prone_pistol_heavy";
+			reloadTime=0.2;
+			dispersion=0.001;
+			minRange=5;
+			minRangeProbab=0.30000001;
+			midRange=25;
+			midRangeProbab=0.60000002;
+			maxRange=50;
+			maxRangeProbab=0.1;
+			aiRateOfFire=2;
+			aiRateOfFireDistance=25;
+		};
+		inertia=0.22499999;
+		aimTransitionSpeed=1.7;
+		dexterity=1.85;
+		fireLightDiffuse[]={233,124,113};
+		fireLightIntensity=0.02;
+		flashSize=0.1;
+		initSpeed=-1;
+		recoil="recoil_pistol_4five";
+		maxZeroing=100;
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=30;
+			holsterScale=0.94999999;
+			class CowsSlot: CowsSlot
+			{
+				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
+				iconPosition[]={0.60000002,0.27000001};
+				iconScale=0.15000001;
+				compatibleItems[]=
+				{
+					"MET_Optic_EC17_1_F"
+				};
+			};
+			class MuzzleSlot: MuzzleSlot
+			{
+				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				compatibleItems[]={};
+				iconPosition[]={0.23999999,0.34999999};
+				iconScale=0.2;
+			};
+			class PointerSlot: PointerSlot
+			{
+				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
+				compatibleItems[]=
+				{
+					"MET_Flashlight_EC17_1_F"
+				};
+				iconPosition[]={0.47,0.55000001};
+				iconScale=0.30000001;
+			};
+		};
+	};
+	class MET_EC17_F: MET_EC17_Base_F
+	{
+		scope=2;
+		displayName="[Imp] EC-17 Holdout";
+		model="3as\3AS_Weapons\EC-17\model\3AS_EC17_F.p3d";
+		picture="3as\3AS_Weapons\EC-17\data\ui\3as_ec17_ca.paa";
+		weaponInfoType="RscWeaponZeroing";
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=55;
 		};
 	};
 	/*========================================================================================================================================
@@ -12315,403 +12813,6 @@ class CfgWeapons
 			};
 		};
 	};
-	class MET_IMP_a180_bl_Scope: ItemCore
-	{
-		scope=2;
-		author="JMax";
-		displayName="A-1 blaster scope";
-		picture="\JMSLLTE_weapons\blasterE11\ui\E11_Scope.paa";
-		model="\JMSLLTE_weapons\a180\a180scope.p3d";
-		descriptionShort="A-Mk1 targeting sight<br />2xModes (Sight, NVG mode)<br />Used primary for: A-series";
-		weaponInfoType="RscWeaponZeroing";
-		class ItemInfo: InventoryOpticsItem_Base_F
-		{
-			mass=4;
-			RMBhint="A-1 Blaster Scope";
-			opticType=2;
-			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
-			class OpticsModes
-			{
-				class a180Col
-				{
-					opticsID=1;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						"Default"
-					};
-					opticsFlare=0;
-					modelOptics="\A3\Weapons_F\empty";
-					opticsDisablePeripherialVision=0;
-					opticsZoomMin=0.25;
-					opticsZoomMax=1.25;
-					opticsZoomInit=0.75;
-					weaponInfoType="";
-					memoryPointCamera="eye";
-					visionMode[]={};
-					distanceZoomMin=200;
-					distanceZoomMax=200;
-					cameraDir="";
-				};
-				class a180Optic2: a180Col
-				{
-					opticsID=2;
-					useModelOptics=1;
-					opticsPPEffects[]=
-					{
-						"OpticsCHAbera5",
-						"OpticsBlur5"
-					};
-					visionMode[]=
-					{
-						"Normal",
-						"NVG"
-					};
-					opticsZoomMin=0.0415;//6x
-					opticsZoomMax=0.125;//2x
-					opticsZoomInit=0.125;//2x
-					memoryPointCamera="opticView";
-					opticsFlare=1;
-					opticsDisablePeripherialVision=1;
-					distanceZoomMin=350;
-					distanceZoomMax=450;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
-					weaponInfoType="RscWeaponEmpty";
-				};
-			};
-		};
-	};
-	class MET_IMP_a280_bl_Scope: ItemCore
-	{
-		scope=2;
-		author="JMax";
-		displayName="A-2 blaster scope";
-		picture="\JMSLLTE_weapons\blasterE11\ui\E11_Scope.paa";
-		model="\JMSLLTE_weapons\a280\a280scope.p3d";
-		descriptionShort="A-Mk2 targeting sight<br />2xModes (Sight, NVG mode)<br />Used primary for: A-series";
-		weaponInfoType="RscWeaponZeroing";
-		class ItemInfo: InventoryOpticsItem_Base_F
-		{
-			mass=4;
-			RMBhint="A-2 Blaster Scope";
-			opticType=2;
-			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_green_easy.p3d";
-			class OpticsModes
-			{
-				class a280Col
-				{
-					opticsID=1;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						"Default"
-					};
-					opticsFlare=0;
-					modelOptics="\A3\Weapons_F\empty";
-					opticsDisablePeripherialVision=0;
-					opticsZoomMin=0.25;
-					opticsZoomMax=1.25;
-					opticsZoomInit=0.75;
-					weaponInfoType="";
-					memoryPointCamera="eye";
-					visionMode[]={};
-					distanceZoomMin=200;
-					distanceZoomMax=200;
-					cameraDir="";
-				};
-				class a280Optic2: a280Col
-				{
-					opticsID=2;
-					useModelOptics=1;
-					opticsPPEffects[]=
-					{
-						"OpticsCHAbera5",
-						"OpticsBlur5"
-					};
-					visionMode[]=
-					{
-						"Normal",
-						"NVG"
-					};
-					opticsZoomMin=0.0415;//6x
-					opticsZoomMax=0.125;//2x
-					opticsZoomInit=0.125;//2x
-					memoryPointCamera="opticView";
-					opticsFlare=1;
-					opticsDisablePeripherialVision=1;
-					distanceZoomMin=350;
-					distanceZoomMax=450;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_green_easy.p3d";
-					weaponInfoType="RscWeaponEmpty";
-				};
-			};
-		};
-	};
-	class MET_IMP_a280_holo_Scope: ItemCore
-	{
-		scope=2;
-		author="JMax";
-		displayName="A-2 holo scope";
-		picture="\JMSLLTE_weapons\blasterE11\ui\E11_Scope.paa";
-		model="\JMSLLTE_weapons\a280\a280scopeHolo.p3d";
-		descriptionShort="A-Mk2 holo sight<br />2xModes (Sight, Collimator)<br />Used primary for: A-series";
-		weaponInfoType="RscWeaponZeroing";
-		class ItemInfo: InventoryOpticsItem_Base_F
-		{
-			mass=4;
-			RMBhint="A-2 Holo Scope";
-			opticType=2;
-			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
-			class OpticsModes
-			{
-				class a280hcq
-				{
-					opticsID=2;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						""
-					};
-					opticsFlare=0;
-					opticsDisablePeripherialVision=0;
-					opticsZoomMin=0.375;
-					opticsZoomMax=1;
-					opticsZoomInit=0.75;
-					memoryPointCamera="eye";
-					visionMode[]={};
-					distanceZoomMin=300;
-					distanceZoomMax=300;
-					cameraDir="";
-				};
-				class a280hscope: a280hcq
-				{
-					opticsID=1;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						"OpticsCHAbera5",
-						"OpticsBlur5"
-					};
-					opticsFlare=1;
-					opticsDisablePeripherialVision=1;
-					opticsZoomMin=0.2;
-					opticsZoomMax=0.2;
-					opticsZoomInit=0.2;
-					memoryPointCamera="opticView";
-					distanceZoomMin=300;
-					distanceZoomMax=300;
-				};
-			};
-		};
-	};
-	class MET_IMP_a280c_bl_Scope: ItemCore
-	{
-		scope=2;
-		author="JMax";
-		displayName="A-2C blaster scope";
-		picture="\JMSLLTE_weapons\blasterE11\ui\E11_Scope.paa";
-		model="\JMSLLTE_weapons\a280\a280Cscope.p3d";
-		descriptionShort="A-Mk2C targeting sight<br />2xModes (Sight, NVG mode)<br />Used primary for: A-series";
-		weaponInfoType="RscWeaponZeroing";
-		class ItemInfo: InventoryOpticsItem_Base_F
-		{
-			mass=4;
-			RMBhint="A280C Blaster Scope";
-			opticType=2;
-			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_green_med.p3d";
-			class OpticsModes
-			{
-				class a280cCol
-				{
-					opticsID=1;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						"Default"
-					};
-					opticsFlare=0;
-					modelOptics="\A3\Weapons_F\empty";
-					opticsDisablePeripherialVision=0;
-					opticsZoomMin=0.25;
-					opticsZoomMax=1.25;
-					opticsZoomInit=0.75;
-					weaponInfoType="";
-					memoryPointCamera="eye";
-					visionMode[]={};
-					distanceZoomMin=200;
-					distanceZoomMax=200;
-					cameraDir="";
-				};
-				class a280cOptic2: a280cCol
-				{
-					opticsID=2;
-					useModelOptics=1;
-					opticsPPEffects[]=
-					{
-						"OpticsCHAbera5",
-						"OpticsBlur5"
-					};
-					visionMode[]=
-					{
-						"Normal",
-						"NVG"
-					};
-					opticsZoomMin=0.0415;//6x
-					opticsZoomMax=0.125;//2x
-					opticsZoomInit=0.125;//2x
-					memoryPointCamera="opticView";
-					opticsFlare=1;
-					opticsDisablePeripherialVision=1;
-					distanceZoomMin=400;
-					distanceZoomMax=550;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_green_med.p3d";
-					weaponInfoType="RscWeaponEmpty";
-				};
-			};
-		};
-	};
-	class MET_IMP_a300_bl_Scope: ItemCore
-	{
-		scope=2;
-		author="JMax";
-		displayName="A-3 blaster scope";
-		picture="\JMSLLTE_weapons\blasterE11\ui\E11_Scope.paa";
-		model="\JMSLLTE_weapons\A300\A300scope.p3d";
-		descriptionShort="A-Mk3 targeting sight<br />3xModes (Sight, NVG, TI modes)<br />Used primary for: A-series";
-		weaponInfoType="RscWeaponZeroing";
-		class ItemInfo: InventoryOpticsItem_Base_F
-		{
-			mass=4;
-			RMBhint="A300 Blaster Scope";
-			opticType=2;
-			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_green_full.p3d";
-			class OpticsModes
-			{
-				class a300Col
-				{
-					opticsID=1;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						"Default"
-					};
-					opticsFlare=0;
-					modelOptics="\A3\Weapons_F\empty";
-					opticsDisablePeripherialVision=0;
-					opticsZoomMin=0.25;
-					opticsZoomMax=1.25;
-					opticsZoomInit=0.75;
-					weaponInfoType="";
-					memoryPointCamera="eye";
-					visionMode[]={};
-					distanceZoomMin=200;
-					distanceZoomMax=200;
-					cameraDir="";
-				};
-				class a300Optic2: a300Col
-				{
-					opticsID=2;
-					useModelOptics=1;
-					opticsPPEffects[]=
-					{
-						"OpticsCHAbera5",
-						"OpticsBlur5"
-					};
-					visionMode[]=
-					{
-						"Normal",
-						"NVG",
-						"Ti"
-					};
-					thermalMode[]={2,3};
-					opticsZoomMin=0.02;
-					opticsZoomMax=0.0625;
-					opticsZoomInit=0.0625;	
-					memoryPointCamera="opticView";
-					opticsFlare=1;
-					opticsDisablePeripherialVision=1;
-					distanceZoomMin=400;
-					distanceZoomMax=850;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_green_full.p3d";
-					weaponInfoType="RscWeaponEmpty";
-				};
-			};
-		};
-	};
-	class MET_IMP_m45_bl_Scope: ItemCore
-	{
-		scope=2;
-		author="JMax";
-		displayName="M-4 blaster scope";
-		picture="\JMSLLTE_weapons\blasterE11\ui\E11_Scope.paa";
-		model="\JMSLLTE_weapons\m45\m45scope.p3d";
-		descriptionShort="M-Mk4 targeting sight<br />2xModes (Sight, NVG mode)<br />Used primary for: M-45";
-		weaponInfoType="RscWeaponZeroing";
-		class ItemInfo: InventoryOpticsItem_Base_F
-		{
-			mass=4;
-			RMBhint="M-4 Blaster Scope";
-			opticType=2;
-			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_blue_med.p3d";
-			class OpticsModes
-			{
-				class a280cCol
-				{
-					opticsID=1;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						"Default"
-					};
-					opticsFlare=0;
-					modelOptics="\A3\Weapons_F\empty";
-					opticsDisablePeripherialVision=0;
-					opticsZoomMin=0.25;
-					opticsZoomMax=1.25;
-					opticsZoomInit=0.75;
-					weaponInfoType="";
-					memoryPointCamera="eye";
-					visionMode[]={};
-					distanceZoomMin=200;
-					distanceZoomMax=200;
-					cameraDir="";
-				};
-				class a280cOptic2: a280cCol
-				{
-					opticsID=2;
-					useModelOptics=1;
-					opticsPPEffects[]=
-					{
-						"OpticsCHAbera5",
-						"OpticsBlur5"
-					};
-					visionMode[]=
-					{
-						"Normal",
-						"NVG",
-						"TI"
-					};
-					thermalMode[]={0,1};
-					opticsZoomMin=0.02;
-					opticsZoomMax=0.0625;
-					opticsZoomInit=0.0625;	
-					memoryPointCamera="opticView";
-					opticsFlare=1;
-					opticsDisablePeripherialVision=1;
-					distanceZoomMin=400;
-					distanceZoomMax=550;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_blue_med.p3d";
-					weaponInfoType="RscWeaponEmpty";
-				};
-			};
-		};
-	};
 	class MET_IMP_dlt19x_bl_Scope: ItemCore
 	{
 		scope=2;
@@ -12852,122 +12953,6 @@ class CfgWeapons
 			};
 		};
 	};
-	class MET_IMP_dh17_holo_Scope: ItemCore
-	{
-		scope=2;
-		author="JMax";
-		displayName="DH17 holo scope";
-		picture="\JMSLLTE_weapons\DH17\DH17_scope.paa";
-		model="\JMSLLTE_weapons\DH17\DH17Scope.p3d";
-		descriptionShort="DH targeting sight<br />2xModes (Sight, Collimator)<br />Used primary for: DH-17";
-		weaponInfoType="RscWeaponZeroing";
-		class ItemInfo: InventoryOpticsItem_Base_F
-		{
-			mass=4;
-			RMBhint="DH17 Blaster Scope";
-			opticType=2;
-			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
-			class OpticsModes
-			{
-				class dhcq
-				{
-					opticsID=2;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						""
-					};
-					opticsFlare=0;
-					opticsDisablePeripherialVision=0;
-					opticsZoomMin=0.375;
-					opticsZoomMax=1;
-					opticsZoomInit=0.75;
-					memoryPointCamera="eye";
-					visionMode[]={};
-					distanceZoomMin=300;
-					distanceZoomMax=300;
-					cameraDir="";
-				};
-				class dhscope: dhcq
-				{
-					opticsID=1;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						"OpticsCHAbera5",
-						"OpticsBlur5"
-					};
-					opticsFlare=1;
-					opticsDisablePeripherialVision=1;
-					opticsZoomMin=0.2;
-					opticsZoomMax=0.2;
-					opticsZoomInit=0.2;
-					memoryPointCamera="opticView";
-					distanceZoomMin=300;
-					distanceZoomMax=300;
-				};
-			};
-		};
-	};
-	class MET_IMP_dh17r_holo_Scope: ItemCore
-	{
-		scope=2;
-		author="JMax";
-		displayName="DH17R holo scope";
-		picture="\JMSLLTE_weapons\blasterE11\ui\E11_Scope.paa";
-		model="\JMSLLTE_weapons\DH17\DH17rScope.p3d";
-		descriptionShort="DHR targeting sight<br />2xModes (Sight, Collimator)<br />Used primary for: DH-17R";
-		weaponInfoType="RscWeaponZeroing";
-		class ItemInfo: InventoryOpticsItem_Base_F
-		{
-			mass=4;
-			RMBhint="DHR Holo Scope";
-			opticType=2;
-			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
-			class OpticsModes
-			{
-				class e11hcq
-				{
-					opticsID=2;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						""
-					};
-					opticsFlare=0;
-					opticsDisablePeripherialVision=0;
-					opticsZoomMin=0.375;
-					opticsZoomMax=1;
-					opticsZoomInit=0.75;
-					memoryPointCamera="eye";
-					visionMode[]={};
-					distanceZoomMin=300;
-					distanceZoomMax=300;
-					cameraDir="";
-				};
-				class e11hscope: e11hcq
-				{
-					opticsID=1;
-					useModelOptics=0;
-					opticsPPEffects[]=
-					{
-						"OpticsCHAbera5",
-						"OpticsBlur5"
-					};
-					opticsFlare=1;
-					opticsDisablePeripherialVision=1;
-					opticsZoomMin=0.2;
-					opticsZoomMax=0.2;
-					opticsZoomInit=0.2;
-					memoryPointCamera="opticView";
-					distanceZoomMin=300;
-					distanceZoomMax=300;
-				};
-			};
-		};
-	};
 	class MET_IMP_DC15a_bl_Scope: ItemCore
 	{
 		scope=2;
@@ -13030,6 +13015,73 @@ class CfgWeapons
 					distanceZoomMin=400;
 					distanceZoomMax=550;
 					modelOptics="z\16th\addons\weapons\scopes\big_cross_blue_full.p3d";
+					weaponInfoType="RscWeaponEmpty";
+				};
+			};
+		};
+	};
+	class MET_IMP_DC15a_red_bl_Scope: ItemCore
+	{
+		scope=2;
+		author="JMax";
+		displayName="DC-2C blaster scope";
+		picture="\JMSLLTE_weapons\blasterE11\ui\E11_Scope.paa";
+		model="\JMSLLTE_weapons\a280\a280Cscope.p3d";
+		descriptionShort="DC-Mk2 targeting sight<br />2xModes (Sight, NVG mode)<br />Used primary for: DC-series, A-series";
+		weaponInfoType="RscWeaponZeroing";
+		class ItemInfo: InventoryOpticsItem_Base_F
+		{
+			mass=4;
+			RMBhint="DC2 Blaster Scope";
+			opticType=2;
+			optics=1;
+			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+			class OpticsModes
+			{
+				class dc15Col
+				{
+					opticsID=1;
+					useModelOptics=0;
+					opticsPPEffects[]=
+					{
+						"Default"
+					};
+					opticsFlare=0;
+					modelOptics="\A3\Weapons_F\empty";
+					opticsDisablePeripherialVision=0;
+					opticsZoomMin=0.25;
+					opticsZoomMax=1.25;
+					opticsZoomInit=0.75;
+					weaponInfoType="";
+					memoryPointCamera="eye";
+					visionMode[]={};
+					distanceZoomMin=200;
+					distanceZoomMax=200;
+					cameraDir="";
+				};
+				class dc15Optic2: dc15Col
+				{
+					opticsID=2;
+					useModelOptics=1;
+					opticsPPEffects[]=
+					{
+						"OpticsCHAbera5",
+						"OpticsBlur5"
+					};
+					visionMode[]=
+					{
+						"Normal",
+						"NVG"
+					};
+					opticsZoomMin=0.05;//5x
+					opticsZoomMax=0.125;//2x
+					opticsZoomInit=0.125;//2x
+					memoryPointCamera="opticView";
+					opticsFlare=1;
+					opticsDisablePeripherialVision=1;
+					distanceZoomMin=400;
+					distanceZoomMax=550;
+					modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -13307,5 +13359,104 @@ class CfgWeapons
 				};
 			};
 		};
+	};
+	class MET_Optic_EC17_1_F: ItemCore
+	{
+		scope=2;
+		displayName="[Imp] EC-17 Optic";
+		picture="\3AS\3AS_Weapons\Data\Textures\Energy_Cell_Arsenal.paa";
+		model="3as\3AS_Weapons\EC-17\model\3AS_EC17_Scope_1.p3d";
+		weaponInfoType="RscWeaponZeroing";
+		class ItemInfo: InventoryOpticsItem_Base_F
+		{
+			mass=7;
+			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			class OpticsModes
+			{
+				class 3AS_Optic_Scope
+				{
+					opticsID=1;
+					useModelOptics=1;
+					opticsPPEffects[]=
+					{
+						"OpticsCHAbera1",
+						"OpticsBlur1"
+					};
+				opticsZoomMin=0.05;//5x
+				opticsZoomMax=0.125;//2x
+				opticsZoomInit=0.125;//2x
+					discreteDistance[]={100,300,400,500,600,700,800,900,1000};
+					discreteDistanceInitIndex=1;
+					distanceZoomMin=100;
+					distanceZoomMax=1000;
+					nFovLimit=0.07;
+					discreteFov[]={0.125,0.0625};
+					discreteInitIndex=0;
+					memoryPointCamera="opticView";
+					opticsFlare=1;
+					opticsDisablePeripherialVision=1;
+					cameraDir="";
+					modelOptics[]=
+					{
+						"z\16th\addons\weapons\scopes\small_crosshair_red.p3d"
+					};
+				};
+				class 3AS_Optic_Top: 3AS_Optic_Scope
+				{
+					opticsID=2;
+					useModelOptics=0;
+					opticsFlare=0;
+					opticsDisablePeripherialVision=0;
+					opticsZoomMin=0.375;
+					opticsZoomMax=1.1;
+					opticsZoomInit=0.75;
+					memoryPointCamera="eye";
+					visionMode[]={};
+					discretefov[]={};
+				};
+			};
+		};
+	};
+	class MET_Flashlight_EC17_1_F: ItemCore
+	{
+		author="Bohemia Interactive";
+		_generalMacro="acc_flashlight";
+		scope=2;
+		displayName="[Imp] EC17 Flashlight";
+		descriptionUse="<t color='#9cf953'>Use: </t>Turn Flashlight ON/OFF";
+		picture="\A3\weapons_F\Data\UI\gear_accv_flashlight_CA.paa";
+		model="3as\3AS_Weapons\EC-17\model\3AS_EC17_Flashlight_1.p3d";
+		descriptionShort="Weapon mounted light.";
+		class ItemInfo: InventoryFlashLightItem_Base_F
+		{
+			mass=2;
+			class FlashLight
+			{
+				color[]={180,160,130};
+				ambient[]={0.89999998,0.81,0.69999999};
+				intensity=100;
+				size=1;
+				innerAngle=5;
+				outerAngle=100;
+				coneFadeCoef=8;
+				position="flash dir";
+				direction="flash";
+				useFlare=1;
+				flareSize=1.4;
+				flareMaxDistance=100;
+				dayLight=0;
+				class Attenuation
+				{
+					start=0;
+					constant=0.5;
+					linear=0.1;
+					quadratic=0.2;
+					hardLimitStart=27;
+					hardLimitEnd=34;
+				};
+				scale[]={0};
+			};
+		};
+		inertia=0.1;
 	};
 };

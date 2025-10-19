@@ -59,9 +59,10 @@ class XtdGearInfos {
         class MET_WM_RK3                        { model = "rk3"; Mod = "WM"; };
 
         // [Imp] EC-17 Holdout Blaster
-        class MET_ec17pistol                      { model = "ec17"; Mod = "LLTE"; };
+        class MET_ec17pistol                    { model = "ec17"; Mod = "LLTE"; };
         class MET_WM_EC17                       { model = "ec17"; Mod = "WM"; };
         class MET_IDA_EC17                      { model = "ec17"; Mod = "IDA"; };
+        class MET_EC17_F                        { model = "ec17"; Mod = "3AS"; };
 
         // [Imp] SE-14 Machine Pistol
         class MET_se14pistol                    { model = "se14"; Mod = "LLTE"; Firemode = "Automatic"; };
