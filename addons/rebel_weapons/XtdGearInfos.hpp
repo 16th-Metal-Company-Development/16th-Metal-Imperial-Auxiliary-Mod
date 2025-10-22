@@ -16,7 +16,7 @@ class XtdGearInfos {
         class MET_IMP_dh17                      { model = "dh17"; variant = "Pistol"; };
         class MET_IMP_dh17rifle                 { model = "dh17"; variant = "Rifle"; };
         // [Rebel] A-180 Blaster Pistol
-        class MET_IMP_a180pistol                { model = "a180"; mod = "LLTE"; };
-        class MET_A180_F                        { model = "a180"; mod = "3AS"; };
+        class MET_IMP_a180pistol                { model = "a180pistol"; mod = "LLTE"; };
+        class MET_A180_F                        { model = "a180pistol"; mod = "3AS"; };
         };
 };
