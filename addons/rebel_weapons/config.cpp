@@ -15,11 +15,11 @@ class CfgPatches
 #include "XtdGearModels.hpp"
 #include "XtdGearInfos.hpp"
 
-class CfgRecoils
+/*class CfgRecoils
 {
 	class recoil_default;
 	class Default;
-};
+};*/
 class CfgAmmo
 {
 	class MET_blasterbolt_low;
@@ -2583,7 +2583,7 @@ class CfgWeapons
 		picture="\JMSLLTE_weapons\dl44\ico_dl44.paa";
 		magazines[]=
 		{
-			"JMSLLTE_DL44_10rnd_Mag"
+			"MET_DL44_mag"
 		};
 		displayname="[Ind] DL-44 Heavy Blaster Pistol";
 		descriptionShort="Heavy blaster pistol<br />Ammo: DL-44 Energy cell<br />Manufactured by BlasTech Industries";
@@ -2616,7 +2616,7 @@ class CfgWeapons
 			"OpticsCHAbera1",
 			"OpticsBlur1"
 		};
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_green_full.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_green_full.p3d";
 		opticsFlare=1;
 		opticsDisablePeripherialVision=0;
 		opticsZoomMin=0.1;
@@ -2665,7 +2665,7 @@ class CfgWeapons
 				distanceZoomMax=300;
 				//discretefov[]={0.041999999,0.0099999998};
 				discreteInitIndex=0;
-				modelOptics="z\16th\addons\weapons\scopes\big_cross_green_full.p3d";
+				modelOptics="z\MET\addons\weapons\scopes\big_cross_green_full.p3d";
 				weaponInfoType="RscWeaponEmpty";
 			};
 		};
@@ -2763,7 +2763,7 @@ class CfgWeapons
 			RMBhint="A-1 Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 			class OpticsModes
 			{
 				class a180Col
@@ -2809,7 +2809,7 @@ class CfgWeapons
 					opticsDisablePeripherialVision=1;
 					distanceZoomMin=350;
 					distanceZoomMax=450;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -2830,7 +2830,7 @@ class CfgWeapons
 			RMBhint="A-2 Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_green_full.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_green_full.p3d";
 			class OpticsModes
 			{
 				class a280Col
@@ -2876,7 +2876,7 @@ class CfgWeapons
 					opticsDisablePeripherialVision=1;
 					distanceZoomMin=350;
 					distanceZoomMax=450;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_green_easy.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_green_easy.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -2897,7 +2897,7 @@ class CfgWeapons
 			RMBhint="A-2 Holo Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class a280hcq
@@ -2955,7 +2955,7 @@ class CfgWeapons
 			RMBhint="A280C Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_green_med.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_green_med.p3d";
 			class OpticsModes
 			{
 				class a280cCol
@@ -3001,7 +3001,7 @@ class CfgWeapons
 					opticsDisablePeripherialVision=1;
 					distanceZoomMin=400;
 					distanceZoomMax=550;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_green_med.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_green_med.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -3022,7 +3022,7 @@ class CfgWeapons
 			RMBhint="A300 Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_green_full.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_green_full.p3d";
 			class OpticsModes
 			{
 				class a300Col
@@ -3070,7 +3070,7 @@ class CfgWeapons
 					opticsDisablePeripherialVision=1;
 					distanceZoomMin=400;
 					distanceZoomMax=850;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_green_full.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_green_full.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -3091,7 +3091,7 @@ class CfgWeapons
 			RMBhint="M-4 Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_blue_med.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_blue_med.p3d";
 			class OpticsModes
 			{
 				class a280cCol
@@ -3139,7 +3139,7 @@ class CfgWeapons
 					opticsDisablePeripherialVision=1;
 					distanceZoomMin=400;
 					distanceZoomMax=550;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_blue_med.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_blue_med.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -3160,7 +3160,7 @@ class CfgWeapons
 			RMBhint="DH17 Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class dhcq
@@ -3218,7 +3218,7 @@ class CfgWeapons
 			RMBhint="DHR Holo Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class e11hcq
