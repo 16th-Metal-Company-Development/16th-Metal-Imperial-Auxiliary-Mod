@@ -322,12 +322,105 @@ class CfgAmmo
 	class MET_IMP_PT_AB: RocketBase
 	{
 		warheadName="AB";
+		submunitionInitSpeed=10;
+		submunitionParentSpeedCoef=0;
+		submunitionInitialOffset[]={0,0,-0.2};
+		deleteParentWhenTriggered=0;
+		ace_frag_enabled=0;
+		/*ace_frag_metal=4500;
+		ace_frag_charge=472.5;
+		ace_frag_gurney_c=2950;
+		ace_frag_gurney_k="3/5";
+		ace_frag_classes[]=
+		{
+			"ACE_frag_large",
+			"ACE_frag_medium_HD",
+			"ACE_frag_tiny_HD",
+			"ACE_frag_small"
+		};*/
+		submunitionAmmo="MET_IMP_PT_AB_Shell";
+		submunitionConeType[]=
+		{
+			"randomupcone",
+			1
+		};
+		submunitionConeAngle=0;
+		ace_frag_skip=0;
+		ace_frag_force=1;
+		hit=50;
+		//indirectHit=90;
+		//indirectHitRange=10;
+		//explosive=0.8;
+		cost=10;
+		aiAmmoUsageFlags="128 + 512";
+		allowAgainstInfantry=1;
+		simulationStep=0.02;
+		//explosionSoundEffect="DefaultExplosion";
+		model="\A3\Weapons_F_Tank\Launchers\MRAWS\rocket_MRAWS_HE_F.p3d";
+		//CraterEffects="ArtyShellCrater";
+		//ExplosionEffects="MortarExplosion";
+		//effectsSmoke="SmokeShellWhite";
+		effectsMissile="MET_Rocket_effect_Green_fly";
+		effectsMissileInit="RocketBackEffectsRPG";
+		timeToLive=24;
+		airFriction=0.050000001;
+		sideAirFriction=0;
+		maxSpeed=345;
+		typicalspeed=10;
+		initTime=0.029999999;
+		thrustTime=0.5;
+		thrust=0.1;
+		fuseDistance=25;
+		whistleDist=4;
+		// Bounce settings
+		//deflecting=90; // High value for strong bounce
+		//bounceOnSurface=1;
+		//bounceOnSurfaceVar=0.1;
+		//bounceOnSurfaceFriction=0.2;
+		//bounceOnSurfaceRestitution=0.8;
+		// Airburst detonation
+		// Use timeToLive for airburst after bounce (approx 0.3s after first impact)
+		// Or use a script for precise control if needed
+		// Optionally, add a proximity fuse for 3m above ground
+		//proximityExplosionDistance=3;
+		// Optionally, set whistleDist for effect
+		class CamShakeExplode
+		{
+			power=50;
+			duration=3.5;
+			frequency=20;
+			distance=100;
+		};
+		class CamShakeHit
+		{
+			power=110;
+			duration=1.8;
+			frequency=20;
+			distance=20;
+		};
+		class CamShakeFire
+		{
+			power=2.78316;
+			duration=1.6;
+			frequency=20;
+			distance=61.967701;
+		};
+		class CamShakePlayerFire
+		{
+			power=3;
+			duration=0.1;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class MET_IMP_PT_AB_Shell: MET_IMP_PT_AB
+	{
+		warheadName="AB";
 		submunitionAmmo="";
 		submunitionDirectionType="SubmunitionModelDirection";
 		submunitionInitSpeed=1000;
 		submunitionParentSpeedCoef=0;
 		submunitionInitialOffset[]={0,0,-0.2};
-		triggerOnImpact=0; // Prevent detonation on first impact
 		deleteParentWhenTriggered=0;
 		ace_frag_enabled=1;
 		ace_frag_metal=4500;
@@ -341,6 +434,8 @@ class CfgAmmo
 			"ACE_frag_tiny_HD",
 			"ACE_frag_small"
 		};
+		timeToLive=5;
+		submunitionConeAngle=0;
 		ace_frag_skip=0;
 		ace_frag_force=1;
 		hit=50;
@@ -358,7 +453,6 @@ class CfgAmmo
 		effectsSmoke="SmokeShellWhite";
 		effectsMissile="MET_Rocket_effect_Green_fly";
 		effectsMissileInit="RocketBackEffectsRPG";
-		timeToLive=24;
 		airFriction=0.050000001;
 		sideAirFriction=0;
 		maxSpeed=345;
@@ -368,18 +462,6 @@ class CfgAmmo
 		thrust=0.1;
 		fuseDistance=25;
 		whistleDist=4;
-		// Bounce settings
-		deflecting=90; // High value for strong bounce
-		//bounceOnSurface=1;
-		//bounceOnSurfaceVar=0.1;
-		//bounceOnSurfaceFriction=0.2;
-		//bounceOnSurfaceRestitution=0.8;
-		// Airburst detonation
-		// Use timeToLive for airburst after bounce (approx 0.3s after first impact)
-		// Or use a script for precise control if needed
-		// Optionally, add a proximity fuse for 3m above ground
-		//proximityExplosionDistance=3;
-		// Optionally, set whistleDist for effect
 		class CamShakeExplode
 		{
 			power=50;
@@ -902,7 +984,7 @@ class CfgMagazines
 		initspeed=345;
 		tracersevery=1;
 	};
-	/*class MET_PTL_AB: CA_LauncherMagazine
+	class MET_PTL_AB: CA_LauncherMagazine
 	{
 		displayname="Airburst Proton Torpedo";
 		scope=2;
@@ -917,7 +999,7 @@ class CfgMagazines
 		count=1;
 		initspeed=345;
 		tracersevery=1;
-	};*/
+	};
 };
 class CfgMagazineWells
 {
@@ -3319,7 +3401,7 @@ class CfgWeapons
 		inertia=0.30000001;
 		dexterity=1.7;
 		initSpeed=300;
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 		class OpticsModes
 		{
 			class Iron
@@ -3424,7 +3506,7 @@ class CfgWeapons
 			1,
 			30
 		};
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 		class OpticsModes
 		{
 			class Iron
@@ -3831,7 +3913,7 @@ class CfgWeapons
 		irLaserEnd="IrLaserEnd";
 		irDistance=5;
 		weaponInfoType="RscOptics_nightstalker";
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 		class OpticsModes
 		{
 			class Iron
@@ -5583,7 +5665,7 @@ class CfgWeapons
 			1,
 			30
 		};
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 		weaponInfoType="RscOptics_sos";
 		class OpticsModes
 			{
@@ -5613,7 +5695,7 @@ class CfgWeapons
 					memoryPointCamera="opticView";
 					modelOptics[]=
 					{
-						"z\16th\addons\weapons\scopes\big_cross_red_full.p3d"
+						"z\MET\addons\weapons\scopes\big_cross_red_full.p3d"
 					};
 					opticsFlare=1;
 					opticsDisablePeripherialVision=1;
@@ -6053,7 +6135,7 @@ class CfgWeapons
 			maxRange=10000;
 			maxRangeProbab=0.30000001;
 		};
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 		opticsFlare=1;
 		opticsDisablePeripherialVision=0;
 		opticsZoomMin=0.1;
@@ -6075,7 +6157,7 @@ class CfgWeapons
 				opticsZoomInit=0.0625;					
 				distanceZoomMin=1000;
 				distanceZoomMax=100;
-				modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+				modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 				weaponInfoType="RscWeaponEmpty";
 				discreteInitIndex=0;
 				memoryPointCamera="opticView";
@@ -6206,7 +6288,7 @@ class CfgWeapons
 			"OpticsCHAbera1",
 			"OpticsBlur1"
 		};
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 		opticsFlare=1;
 		opticsDisablePeripherialVision=0;
 		opticsZoomMin=0.1;
@@ -6261,7 +6343,7 @@ class CfgWeapons
 				opticsFlare=1;
 				opticsDisablePeripherialVision=1;
 				cameraDir="";
-				modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+				modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 				weaponInfoType="RscWeaponEmpty";
 			};
 		};
@@ -6461,7 +6543,7 @@ class CfgWeapons
 			1,
 			30
 		};
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 		weaponInfoType="RscOptics_sos";
 		class OpticsModes
 		{
@@ -6492,7 +6574,7 @@ class CfgWeapons
 				opticsFlare=1;
 				opticsDisablePeripherialVision=1;
 				cameraDir="";
-				modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+				modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 				weaponInfoType="RscWeaponEmpty";
 			};
 		};
@@ -6786,7 +6868,7 @@ class CfgWeapons
 			maxRangeProbab=0.30000001;
 		};
 		weaponInfoType="RscOptics_nightstalker";
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 		class OpticsModes
 		{
 			class Iron
@@ -6837,7 +6919,7 @@ class CfgWeapons
 				opticsFlare=1;
 				opticsDisablePeripherialVision=1;
 				cameraDir="";
-				modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+				modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 				weaponInfoType="RscWeaponEmpty";
 			};
 		};
@@ -7593,7 +7675,7 @@ class CfgWeapons
 			"OpticsCHAbera1",
 			"OpticsBlur1"
 		};
-		modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 		opticsFlare=1;
 		opticsDisablePeripherialVision=0;
 		opticsZoomMin=0.1;
@@ -7642,7 +7724,7 @@ class CfgWeapons
 				distanceZoomMax=300;
 				discretefov[]={0.041999999,0.0099999998};
 				discreteInitIndex=0;
-				modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+				modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 				weaponInfoType="RscWeaponEmpty";
 			};
 		};
@@ -8743,7 +8825,7 @@ class CfgWeapons
 			"OpticsCHAbera1",
 			"OpticsBlur1"
 		};
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 		opticsFlare=1;
 		opticsDisablePeripherialVision=0;
 		opticsZoomMin=0.1;
@@ -8785,7 +8867,7 @@ class CfgWeapons
 				opticsZoomInit=0.0625;					
 				distanceZoomMin=1000;
 				distanceZoomMax=100;
-				modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+				modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 				weaponInfoType="RscWeaponEmpty";
 				discreteInitIndex=0;
 				memoryPointCamera="opticView";
@@ -9876,7 +9958,7 @@ class CfgWeapons
 			maxRange=10000;
 			maxRangeProbab=0.30000001;
 		};
-		modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 		class OpticsModes
 		{
 			class IDA_DC15X_Scope
@@ -10541,7 +10623,7 @@ class CfgWeapons
 				compatibleItems[]={};
 			};
 		};
-		modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 		optics=1;
 		class OpticsModes
 		{
@@ -10727,7 +10809,7 @@ class CfgWeapons
 			maxRangeProbab=0.30000001;
 		};
 		weaponInfoType="RscOptics_nightstalker";
-		modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+		modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 		class OpticsModes
 		{
 			class Iron
@@ -12025,7 +12107,7 @@ class CfgWeapons
 		class ItemInfo: InventoryOpticsItem_Base_F
 		{
 			mass=4;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			optics=1;
 			class OpticsModes
 			{
@@ -12049,7 +12131,7 @@ class CfgWeapons
 					//discretefov[]={0.041999999,0.0099999998};
 					discreteInitIndex=0;
 					memoryPointCamera="opticView";
-					modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 					visionMode[]=
 					{
 						"Normal",
@@ -12078,7 +12160,7 @@ class CfgWeapons
 			RMBhint="E Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class E11Col
@@ -12124,7 +12206,7 @@ class CfgWeapons
 					opticsDisablePeripherialVision=1;
 					distanceZoomMin=350;
 					distanceZoomMax=450;
-					modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -12145,7 +12227,7 @@ class CfgWeapons
 			RMBhint="E Holo Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class e11hcq
@@ -12203,7 +12285,7 @@ class CfgWeapons
 			RMBhint="E Holo Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class e11sfcq
@@ -12259,7 +12341,7 @@ class CfgWeapons
 		{
 			mass=10;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			//weaponInfoType="RscOptics_nightstalker";
 			allowedSlots[]={801,701,901};
 			mountAction="MountOptic";
@@ -12470,7 +12552,7 @@ class CfgWeapons
 		class ItemInfo: InventoryOpticsItem_Base_F
 		{
 			mass=7;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 			class OpticsModes
 			{
 				class 3AS_Imp_Optic4
@@ -12494,7 +12576,7 @@ class CfgWeapons
 					discreteInitIndex=0;
 					modelOptics[]=
 					{
-						"z\16th\addons\weapons\scopes\big_cross_red_med.p3d"
+						"z\MET\addons\weapons\scopes\big_cross_red_med.p3d"
 					};
 					memoryPointCamera="opticView";
 					opticsFlare=1;
@@ -12532,7 +12614,7 @@ class CfgWeapons
 		class ItemInfo: InventoryOpticsItem_Base_F
 		{
 			mass=7;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class MET_Imp_OpticE11
@@ -12556,7 +12638,7 @@ class CfgWeapons
 					discreteInitIndex=0;
 					modelOptics[]=
 					{
-						"z\16th\addons\weapons\scopes\small_crosshair_red.p3d"
+						"z\MET\addons\weapons\scopes\small_crosshair_red.p3d"
 					};
 					memoryPointCamera="opticView";
 					opticsFlare=1;
@@ -12643,7 +12725,7 @@ class CfgWeapons
 		class ItemInfo: InventoryOpticsItem_Base_F
 		{
 			mass=7;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class 3AS_Imp_OpticSE14R
@@ -12692,7 +12774,7 @@ class CfgWeapons
 			RMBhint="SE/r Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class SEscope
@@ -12738,7 +12820,7 @@ class CfgWeapons
 					distanceZoomMax=300;
 					//discretefov[]={0.041999999,0.0099999998};
 					discreteInitIndex=0;
-					modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -12759,7 +12841,7 @@ class CfgWeapons
 			RMBhint="SE/c Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class SEscope
@@ -12807,7 +12889,7 @@ class CfgWeapons
 					distanceZoomMax=300;
 					//discretefov[]={0.041999999,0.0099999998};
 					discreteInitIndex=0;
-					modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -12828,7 +12910,7 @@ class CfgWeapons
 			RMBhint="DLTx Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 			class OpticsModes
 			{
 				class dltCol
@@ -12880,7 +12962,7 @@ class CfgWeapons
 					distanceZoomMax=3000;
 					//discretefov[]={0.041999999,0.0099999998};
 					discreteInitIndex=0;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -12901,7 +12983,7 @@ class CfgWeapons
 			RMBhint="RT97C Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_circle.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_red_circle.p3d";
 			class OpticsModes
 			{
 				class E11Col
@@ -12947,7 +13029,7 @@ class CfgWeapons
 					opticsDisablePeripherialVision=1;
 					distanceZoomMin=300;
 					distanceZoomMax=350;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_red_circle.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_red_circle.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -12968,7 +13050,7 @@ class CfgWeapons
 			RMBhint="DC2 Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_blue_full.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_blue_full.p3d";
 			class OpticsModes
 			{
 				class dc15Col
@@ -13014,7 +13096,7 @@ class CfgWeapons
 					opticsDisablePeripherialVision=1;
 					distanceZoomMin=400;
 					distanceZoomMax=550;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_blue_full.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_blue_full.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -13035,7 +13117,7 @@ class CfgWeapons
 			RMBhint="DC2 Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 			class OpticsModes
 			{
 				class dc15Col
@@ -13081,7 +13163,7 @@ class CfgWeapons
 					opticsDisablePeripherialVision=1;
 					distanceZoomMin=400;
 					distanceZoomMax=550;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_red_full.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_red_full.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -13102,7 +13184,7 @@ class CfgWeapons
 			RMBhint="EC Holo Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class e11hcq
@@ -13160,7 +13242,7 @@ class CfgWeapons
 			RMBhint="EE3 Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 			class OpticsModes
 			{
 				class dltCol
@@ -13210,7 +13292,7 @@ class CfgWeapons
 					distanceZoomMax=3000;
 					//discretefov[]={0.041999999,0.0099999998};
 					discreteInitIndex=0;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_red_med.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_red_med.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -13231,7 +13313,7 @@ class CfgWeapons
 			RMBhint="EE4 Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_easy.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_red_easy.p3d";
 			class OpticsModes
 			{
 				class dltCol
@@ -13281,7 +13363,7 @@ class CfgWeapons
 					distanceZoomMax=3000;
 					//discretefov[]={0.041999999,0.0099999998};
 					discreteInitIndex=0;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_red_easy.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_red_easy.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -13302,7 +13384,7 @@ class CfgWeapons
 			RMBhint="EE4M Blaster Scope";
 			opticType=2;
 			optics=1;
-			modelOptics="z\16th\addons\weapons\scopes\big_cross_red_easy.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\big_cross_red_easy.p3d";
 			class OpticsModes
 			{
 				class dltCol
@@ -13354,7 +13436,7 @@ class CfgWeapons
 					distanceZoomMax=3000;
 					//discretefov[]={0.041999999,0.0099999998};
 					discreteInitIndex=0;
-					modelOptics="z\16th\addons\weapons\scopes\big_cross_red_easy.p3d";
+					modelOptics="z\MET\addons\weapons\scopes\big_cross_red_easy.p3d";
 					weaponInfoType="RscWeaponEmpty";
 				};
 			};
@@ -13370,7 +13452,7 @@ class CfgWeapons
 		class ItemInfo: InventoryOpticsItem_Base_F
 		{
 			mass=7;
-			modelOptics="z\16th\addons\weapons\scopes\small_crosshair_red.p3d";
+			modelOptics="z\MET\addons\weapons\scopes\small_crosshair_red.p3d";
 			class OpticsModes
 			{
 				class 3AS_Optic_Scope
@@ -13398,7 +13480,7 @@ class CfgWeapons
 					cameraDir="";
 					modelOptics[]=
 					{
-						"z\16th\addons\weapons\scopes\small_crosshair_red.p3d"
+						"z\MET\addons\weapons\scopes\small_crosshair_red.p3d"
 					};
 				};
 				class 3AS_Optic_Top: 3AS_Optic_Scope
