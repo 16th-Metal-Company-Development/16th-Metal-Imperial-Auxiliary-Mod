@@ -14,7 +14,7 @@ class CfgPatches
 
 #include "XtdGearModels.hpp"
 #include "XtdGearInfos.hpp"
-class CfgFunctions
+/*class CfgFunctions
 {
 	class MET_Imperial
 	{
@@ -28,7 +28,7 @@ class CfgFunctions
 			};
 		};
 	};
-};
+};*/
 class CfgRecoils
 {
 	class recoil_default;
@@ -47,6 +47,7 @@ class CfgRecoils
 		temporary=0.079999998;
 	};
 };
+
 class CfgAmmo
 {
 	class MET_slug_blue;
@@ -74,10 +75,11 @@ class CfgAmmo
 	};
 	class MET_pellet_subminition_red: MET_slug_red
 	{
+		hit=9;
 		deflecting=2;
 	};
-	class G_40mm_HE;
-	class MET_HE_LauncherGrenade_Red: G_40mm_HE
+	class MET_HE_LauncherGrenade;
+	class MET_HE_LauncherGrenade_Red: MET_HE_LauncherGrenade
 	{
 		effectfly="MET_BlasterBoltGlow_Red_Fly";
 		lightcolor[]={1,0,0};
@@ -165,7 +167,7 @@ class CfgAmmo
 		indirectHit=15;
 		effectsMissile="MET_Rocket_effect_Red_fly";
 	};
-	class RocketBase;
+	/*class RocketBase;
 	class MET_IMP_PT_HEP: RocketBase
 	{
 		warheadName="HE";
@@ -338,7 +340,7 @@ class CfgAmmo
 			"ACE_frag_tiny_HD",
 			"ACE_frag_small"
 		};*/
-		submunitionAmmo="MET_IMP_PT_AB_Shell";
+		/*submunitionAmmo="MET_IMP_PT_AB_Shell";
 		submunitionConeType[]=
 		{
 			"randomupcone",
@@ -490,14 +492,14 @@ class CfgAmmo
 			frequency=20;
 			distance=1;
 		};
-		class EventHandlers
+		/*class EventHandlers
 		{
 			class MET_Airburst
 			{
 				fired = "_this call MET_fnc_PTL_airburst";
 			};
 		};
-	};
+	};*/
 };
 class CBA_DisposableLaunchers
 {
