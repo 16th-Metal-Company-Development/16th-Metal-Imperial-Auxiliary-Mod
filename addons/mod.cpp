@@ -1,4 +1,4 @@
-name = "The 16th Imperial Aux Mod";
+name = "16th Imperial Aux Mod";
 
 
 picture = "metimperiallogo.paa";
@@ -10,7 +10,7 @@ logoOver = "16th_logo.paa";
 tooltip = "16th Metal Company Imperial Aux Mod"; 
 
 
-overview = "The 16th Imperial Aux Mod"; 
+overview = "16th Imperial Aux Mod"; 
 
 
 author = "Mod LCDR Wolf, Ronin, and Blatt";
